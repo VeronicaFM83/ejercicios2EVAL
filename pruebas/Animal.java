@@ -10,11 +10,24 @@ public class Animal {
 	LocalDate fecha;
 	int edad;
 	
+	static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+	
 	// metodos
-
+	
+	public Animal(String nombre) {
+		this.nombre = nombre;
+		this.fecha = LocalDate.now();
+		this.edad = getEdad();
+	}
 	public Animal(String nombre, LocalDate fecha) {
 		this.nombre = nombre;
 		this.fecha = fecha;
+		this.edad = getEdad();
+	}
+	
+	public Animal(String nombre, String fecha) {
+		this.nombre = nombre;
+		this.fecha = LocalDate.parse(fecha, fmt);
 		this.edad = getEdad();
 	}
 	
@@ -26,8 +39,8 @@ public class Animal {
 		this.nombre = nombre;
 	}
 
-	public LocalDate getFecha() {
-		return fecha;
+	public String getFecha() {
+		return this.fecha.format(fmt);
 	}
 	
 	public int getEdad() {
@@ -43,18 +56,22 @@ public class Animal {
 	}
 	
 	public void setFecha(String fecha) {
-		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		this.fecha = LocalDate.parse(fecha, fmt);
 	}
 
 	@Override
 	public String toString() {
-		return "Nombre: " + this.nombre + " - Fecha: " + this.fecha; 
+		return "Nombre: " + this.nombre + " - Fecha nac.: " + this.fecha.format(fmt) + " - Edad: " + this.edad; 
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		Animal anim1 = new Animal("Bichin");
+		System.out.println(anim1);
+		Animal anim2 = new Animal("Tukon","06-02-2016");
+		System.out.println(anim2);
+		anim1.setFecha("01-01-2018");
+		System.out.println(anim1.getFecha());
+		System.out.println(anim1);
 	}
-
 }
