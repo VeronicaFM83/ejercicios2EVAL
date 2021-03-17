@@ -1,0 +1,373 @@
+*** REDONDEO ***
+
+Math.ceil() > Redondear hacia arriba
+Math.floor() > Redondear hacia abajo o lo que es lo mismo devuelve la parte entera
+Math.round() > redondea hacia arriba o hacia abajo dependiendo de la parte decimal del número
+
+*** PASAR A DOS DECIMALES ***
+		
+		//SE DECLARAN VARIABLES
+		int entero; //Int aunque también funcionaría con double
+		double num, decimal, suma; //Double porque tendrá decimales
+		
+		num = 5.525333333333333; //Se establece un valor de ejemplo
+		
+		//REDONDEO
+		entero = (int) Math.floor(num); //Separamos parte entera
+		decimal = Math.round((num - entero) * 100); //Dejamos la parte decimal, multiplicamos por 100 para pasar a enteros 2 dígitos
+		decimal /= 100; //Dividimos entre 100 para volver a pasar a decimal una vez redondeado
+		suma = entero + decimal; //Resultado redondeado a 2 dígitos
+		
+		System.out.println ("num " + num + " entero " + entero + " decimal " + decimal + "suma: " + suma + "\n");
+	
+		
+*** INTRODUCIR DATOS POR TECLADO ***
+	**** Usando BUFFERED ****
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Prueba {
+	public static void main(String[] args) throws IOException {
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); // Usamos clase BufferedReader
+		String teclado =  reader.readLine(); // Almacenamos el texto captado por teclado
+	}
+}
+
+	**** Usando SCANNER ****
+import java.util.Scanner;
+
+public class Prueba {
+
+	public static void main(String[] args) {
+
+		Scanner input = new Scanner (System.in); // Creación de objeto Scanner
+		String texto = input.nextLine (); // Almacenamos el texto captado por teclado
+		int num = input.nextInt(); // Almacenamos número captado por teclado
+	}
+}
+
+
+*** FECHAS ***
+
+package Pruebas;
+
+import java.util.Scanner;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class PruebasEjercicios {
+
+	public static void main(String args[]) { 
+		
+		// OPCION 1
+		Date objDate = new Date(); // Sistema actual La fecha y la hora se asignan a objDate 
+		System.out.println(objDate); 
+		String strDateFormat = "hh:mm:ss a dd-MMM-aaaa"; // El formato de fecha está especificado  
+		SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); // La cadena de formato de fecha se pasa como un argumento al objeto de formato de fecha  
+		System.out.println(objSDF.format(objDate)); // El formato de fecha se aplica a la fecha actual
+		
+		// OPCION 2
+		SimpleDateFormat objSDF = new SimpleDateFormat("dd-MM-yyyy"); // El formato de fecha se pasa como un argumento al objeto de formato de fecha 
+		System.out.println(objSDF.format(new Date())); // El formato de fecha se aplica a la fecha actual
+		
+	} //fin de main
+
+} //fin de la clase
+
+*** NÚMERO RANDOM ***
+		import java.util.Random;
+		Random r1 = new Random();
+		int posX = r1.nextInt(9)+1; // se pasa como parámetro número máximo-mínimo y se suma el mínimo
+		-----------	
+		/*java.util.Random.nextInt(int n) : The nextInt(int n) is used to get a random number between 0(inclusive) and the number passed in this argument(n), exclusive.*/
+		// create random object 
+        Random ran = new Random(); 
+        // generating integer 
+        int nxt = ran.nextInt(); 
+		-----------	
+		// número aleatorio entre -999.999 y 1.000.000	
+		int nxt = ran.nextInt(2000000) - 999999; 	
+		-----------	
+		Random r = new Random();
+		int dim = r.nextInt(490) + 10; // Num random entre 10 y 500
+		-----------	
+		int r = Math.round(Math.random() * 490) + 10; // Otra forma de hacer un random
+		-----------	
+		int max = (int) Math.floor(Math.random()*(10-100+1)+100);// Queremos que N (el valor máximo) sea un número entero entre 10 y 100
+		int valor = (int) Math.floor(Math.random()*(1-max+1)+max);// Este es el número a adivinar
+		
+*** ARRAY NUMEROS NO REPETIDOS ***
+https://yoandroide.xyz/generar-numeros-aleatorios-no-repetidos-en-java/
+
+*** ORDENAR ARRAYS O STRING ***
+**Ordenar**
+Arrays.sort(nombreArray); // ordena el array
+
+**Invertir**
+StringBuffer invertido = new StringBuffer(texto); // Creamos un búfer de cadena con el texto
+invertido = invertido.reverse(); // Usamos el método reverse de StringBuffer
+
+*** METODOS STRING ***
+https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=961:stringbuffer-stringbuilder-java-ejemplo-diferencias-entre-clases-criterios-para-elegir-metodos-cu00914c&catid=58&Itemid=180
+http://www.manualweb.net/java/funciones-basicas-con-cadenas/
+
+
+*** CONVERSIÓN TIPO DATOS ***
+https://es.stackoverflow.com/questions/1487/guia-definitiva-de-conversi%C3%B3n-de-tipos-en-java
+
+*** VALOR ABSOLUTO DE UN Nº (IGNORAR SIGNO) ***
+Math.abs(-5)
+
+*** CONVERTIR STRING EN ARRAY Y VICEVERSA***
+** String a Array **
+	public static void main(String[] args) {
+		   String testString = "Uno dos tres";
+		   String strArray[] = testString.split(" ");
+		   System.out.println("String converted to String array");
+		   for(int i=0; i < strArray.length; i++)//print elements of String array
+			   System.out.println(strArray[i]);
+		   System.out.println(Arrays.toString(strArray));// imprime directamente el contenido del array pasado a String
+	}
+}
+** Array a String **
+		   Arrays.toString(nombreArray) // Convierte Array a String
+
+*** SECUENCIAS DE ESCAPE ***
+\n -----> Nueva Linea.
+\t -----> Tabulador.
+\r -----> Retroceso de Carro.
+\f -----> Comienzo de Pagina.
+\b -----> Borrado a la Izquierda.
+\\ -----> El carácter barra inversa ( \ ).
+\' -----> El carácter prima simple ( ' ).
+\" -----> El carácter prima doble o bi-prima ( " ).
+
+*** BUCLES ***
+· Bucle for (repite para)
+· Bucle for/in (repite para cada)
+· Bucle While (repite mientras)
+· Bucle Do While (repite hasta)
+
+*** BUSCAR O COMPARAR STRING ***
+
+** index.Of **
+		System.out.println("Escriba un texto");
+		String texto1 = input.nextLine(); // Almacenamos texto por teclado
+		System.out.println("Escriba otro texto");
+		String texto2 = input.nextLine(); // Almacenamos texto por teclado
+		
+		String texto1Mayus = texto1.toUpperCase();
+		String texto2Mayus = texto2.toUpperCase();
+		
+		if (texto2Mayus.equals(texto1Mayus))
+			System.out.println(texto1 + " y " + texto2 + " son IGUALES");
+			else {
+			 int compara = texto1Mayus.indexOf(texto2Mayus);
+			 if (compara>=0)
+				 System.out.println(texto2 + " se encuentra dentro de " + texto1 + " en la posición " + compara);
+			 else
+				 System.out.println(texto1 + " y " + texto2 + " son DIFERENTES");
+		}
+** constains ** 
+	String a = «Conversión»;
+	if(a.contains(«Convers») ){
+	//Es verdadero
+	}else{
+	//Es falso
+	}
+	
+	
+** colecciones y arraysList **
+
+https://www.aprenderaprogramar.com/index.php?option=com_content&view=article&id=596:interface-collection-api-java-add-remove-size-ejemplo-arraylist-diferencia-con-list-streams-cu00917c&catid=58&Itemid=180
+https://www.aprenderaprogramar.es/index.php?option=com_content&view=article&id=649:transformar-un-array-en-arraylist-java-metodo-aslist-clase-arrays-ejemplo-constructores-cu00679b&catid=68:curso-aprender-programacion-java-desde-cero&Itemid=188
+
+https://www.geeksforgeeks.org/arraylist-in-java/#:~:text=ArrayList%20is%20a%20part%20of,in%20the%20array%20is%20needed.
+
+** arrayList a String **
+
+https://www.delftstack.com/es/howto/java/how-to-convert-an-arraylist-to-a-string-in-java/
+
+    //iterate the ArrayList, get and print the elements of each int[] array  
+    for(int[] anIntArray:intArrays) {
+       //iterate the retrieved array an print the individual elements
+       for (int aNumber : anIntArray) {
+           System.out.println("Arraylist contains:" + aNumber);
+       }
+}
+
+
+*** SCANNER leer entrada estandar teclado con saltos de línea
+
+https://www.redeszone.net/2012/02/20/curso-de-java-entrada-y-salida-con-ficheros-clase-scanner/
+
+https://darkbyteblog.wordpress.com/2011/03/08/java-flujos-de-datos-entrada-y-salida-estandar/
+
+*** EXCEPCIONES ***
+https://misapuntesdeprogramacion.wordpress.com/2013/02/07/excepciones/
+** Checked o unchecked ++ 
+http://www.cursohibernate.es/doku.php?id=patrones:excepciones#:~:text=Las%20excepciones%20Unchecked%20son%20aquellas,heredan%20de%20la%20clase%20RuntimeException%20.
+
+** revisar esto**
+Arrays.asList("AAAA DDDD, DDDD".split("[\\P{L}]+")).forEach(System.out::println);
+** metodos scanner **
+scanner.next("\\p{L}+");
+scanner.nextInt();
+if (scanner.hasNext())
+
+
+*** Obtener primera palabra de un STRING ***
+        Scanner scanner = new Scanner(System.in);
+        String full_Name = scanner.nextLine();
+        scanner.close();
+        String middleName = full_Name.split(" ")[1].trim();
+        System.out.println(middleName);
+
+otro ejemplo:
+
+Scanner sc = new Scanner (System.in);
+System.out.println("introduce una frase"); 
+String frase = sc.nextLine();
+StringTokenizer tokens = new StringTokenizer(frase);
+String primeraPalabra = tokens.nextToken();
+System.out.println("la primer palabra es :" +primeraPalabra); 
+
+otro ejemplo:
+
+String s = "This is a sample sentence.";
+String[] words = s.split("\\s+");
+for (int i = 0; i < words.length; i++) {
+    // You may want to check for a non-word character before blindly
+    // performing a replacement
+    // It may also be necessary to adjust the character class
+    words[i] = words[i].replaceAll("[^\\w]", "");
+}
+
+*** EJEMPLO obtener palabras por teclado con NEXT ***
+
+static void obtenerEntrenadores() throws IOException {
+		String linea = in.readLine();
+		while (!linea.equalsIgnoreCase("torneo")) {
+			Scanner scanner = new Scanner(linea);
+			try {
+				String entrenador = scanner.next("\\p{L}+");
+				String pokemon = scanner.next("\\p{L}+"); 
+				String elemento = scanner.next("\\p{L}+");
+				int salud = scanner.nextInt();
+				if (scanner.hasNext())
+					System.out.println("Demasiados datos en esta línea, introdúcelos de nuevo");
+				else
+					actualizarEntrenador(entrenador, pokemon, elemento, salud);
+			} catch (InputMismatchException e) {
+				señalarError(scanner);
+			} catch (NoSuchElementException e) {
+				System.out.println("Datos insuficientes, introdúcelos de nuevo");
+			}
+			scanner.close();
+			linea = in.readLine();
+		}
+	}
+	
+*** ENUM (listado de elementos constantes) ***
+
+enum Level {LOW, MEDIUM, HIGH};
+Level.LOW;
+
+*** ORDEN NATURAL Y ALTERNATIVO OBJETOS ***
+** Listas/Colecciones **
+
+T max(Collection<T> coll)
+Returns the maximum element of the given collection, according to the natural ordering
+of its elements.
+T max(Collection<T> coll, Comparator<T> comp)
+Returns the maximum element of the given collection, according to the order induced by
+the specified comparator.
+T min(Collection<T> coll)
+Returns the minimum element of the given collection, according to the natural ordering
+of its elements.
+T min(Collection<T> coll, Comparator<T> comp)
+Returns the minimum element of the given collection, according to the order induced by
+the specified comparator.
+void reverse(List<T> list)
+Reverses the order of the elements in the specified list.
+void sort(List<T> list)
+Sorts the specified list into ascending order, according to the natural ordering of its
+elements.
+void sort(List<T> list, Comparator<? super T> c)
+Sorts the specified list according to the order induced by the specified comparator.
+
+
+**Comparable y Comparator **
+
+https://www.aprenderaprogramar.es/index.php?option=com_content&view=article&id=599:interface-comparator-api-java-diferencias-con-comparable-clase-collections-codigo-ejemplo-cu00918c&catid=58&Itemid=180
+Los tipos Comparable y Comparator están definidos como:
+package java.lang;
+public interface Comparable<T>{
+int compareTo(T o);
+}
+package java.util;
+public interface Comparator<T>{
+int compare(T o1, T o2);
+}
+
+El orden natural (Comparable) compara el objeto this con otro que toma como parámetro el
+método compareTo. Los órdenes alternativos (Comparator) comparan los dos objetos que
+toma como parámetros el método compare.
+compareTo y compare comparan dos objetos p1 y p2 (en el caso de compareTo p1 es this)
+y devuelve un entero que es:
+◦ Negativo si p1 es menor que p2
+◦ Cero si p1 es igual a p2
+◦ Positivo si p1 es mayor que p2
+EJEMPLO:
+	public int compareTo(Empleado p) {
+		int r;
+		if (p==null)
+			throw new NullPointerException();
+		r = this.getNombre().compareTo(p.getNombre());
+		if (r==0)
+			r = this.getApellidos().compareTo(p.getApellidos());
+		return r;
+	}
+	
+*** SUMAR O RESTAR FECHAS LOCALDATE ***
+
+public static String restarAnios(String fechaYHora, long anios) {
+    // Crear un formateador como 2018-10-16 15:00:00
+    DateTimeFormatter formateador = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss");
+
+    // Lo convertimos a objeto para poder trabajar con él
+    LocalDateTime fechaYHoraLocal = LocalDateTime.parse(fechaYHora, formateador);
+
+    // Restar los años indicados
+    fechaYHoraLocal = fechaYHoraLocal.minusYears(anios);
+
+    //Formatear de nuevo y regresar como cadena
+    return fechaYHoraLocal.format(formateador);
+}
+
+minusYears y plusYears: sumar y restar años
+Para los meses se usan minusMonths y plusMonths
+En caso de querer sumar o restar días usa minusDays y plusDays para días
+Si queremos trabajar con semanas de 7 días usamos a plusWeeks y minusWeeks
+Por otro lado, como LocalDateTime es más preciso, soporta más métodos. Son los siguientes:
+
+En el caso de trabajar con horas, tenemos a plusHours y minusHours
+Claramente podemos sumar y restar minutos con plusMinutes y minusMinutes
+Si queremos trabajar con segundos usamos plusSeconds y minusSeconds
+Y el último método, el más preciso, es el de plusNanos y minusNanos, que opera con nanosegundos.
+
+
+*** crear excepciones ***
+throw new IllegalArgumentException();
+throw new ArithmeticException();
+NumberFormatException
+NullPointerException
+
+
+***ARRAYS y COLECCIONES ***
+https://en.proft.me/2013/11/3/java-collection-framework-cheat-sheet/
+
+
+*** EJEMPLO CON ENUM Y JUEGO DE CARTAS ***
+https://www.tutorialesprogramacionya.com/javaya/detalleconcepto.php?punto=67&codigo=145&inicio=60
