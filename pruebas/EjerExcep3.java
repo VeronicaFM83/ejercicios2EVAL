@@ -26,18 +26,26 @@ public class EjerExcep3 {
 				case "A":
 					try {
 						ca = Integer.parseInt(teclado.substring(1,teclado.length()).trim());
+						if (ca<=0)
+							throw new IllegalArgumentException();
 						System.out.println("Cateto A: " + ca);
 					} catch (NumberFormatException e) {
 						System.err.println("Error al introducir valor del cateto");
+					} catch (IllegalArgumentException e) {
+						System.err.println("El valor del cateto no puede ser 0 o inferior");
 					} finally {
 						break;
 					}
 				case "B":
 					try {
 						cb = Integer.parseInt(teclado.substring(1,teclado.length()).trim());
+						if (cb<=0)
+							throw new IllegalArgumentException();
 						System.out.println("Cateto B: " + cb);
 					} catch (NumberFormatException e) {
 						System.err.println("Error al introducir valor del cateto");
+					} catch (IllegalArgumentException e) {
+						System.err.println("El valor del cateto no puede ser 0 o inferior");
 					} finally {
 						break;
 					}
@@ -68,7 +76,8 @@ public class EjerExcep3 {
 	
 	public static double calcula(int ca, int cb) {
 		double h;
-		h = (Math.pow(ca, 2) + Math.pow(cb, 2));
+		h = Math.sqrt((Math.pow(ca, 2) + Math.pow(cb, 2)));
+		h = Math.round(h*100)/100;
 		return h;
 	}
 }
